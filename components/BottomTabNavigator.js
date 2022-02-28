@@ -4,8 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-import TransactionScreen from "../screens/Transaction";
-import SearchScreen from "../screens/Search";
+import RideScreen from "../screens/Ride";
+import RideHistoryScreen from "../screens/RideHistory";
 
 const Tab = createBottomTabNavigator();
 
@@ -18,13 +18,30 @@ export default class BottomTabNavigator extends Component {
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
-              if (route.name === "Transaction") {
-                iconName = "book";
-              } else if (route.name === "Search") {
-                iconName = "search";
-              }
+              // if (route === "Ride") {
+              //   iconName = "bicycle";
+              // } else if (route === "Ride History") {
+              //   iconName = "time";
+              // }
+            
+              // if (route.name = "Ride") {
+              //  iconName = "bicycle";
+              // } else if (route.name = "Ride History") {
+              //  iconName = "time";
+              // }
 
-              // You can return any component that you like here!
+              // if (route.name === Ride) {
+              //   iconName = "bicycle";
+              // } else if (route.name === Ride History) {
+              //   iconName = "time";
+              // }
+
+               if (route.name === "Ride") {
+                 iconName = "bicycle";
+               } else if (route.name === "Ride History") {
+                 iconName = "time";
+               }
+
               return (
                 <Ionicons
                   name={iconName}
@@ -36,32 +53,26 @@ export default class BottomTabNavigator extends Component {
             }
           })}
           tabBarOptions={{
-            activeTintColor: "#FFFFFF",
+            activeTintColor: "#FBE5C0",
             inactiveTintColor: "black",
             style: {
-              height: 130,
+              height: 100,
               borderTopWidth: 0,
-              backgroundColor: "#5653d4"
+              backgroundColor: "#F88379"
             },
             labelStyle: {
               fontSize: 20,
               fontFamily: "Rajdhani_600SemiBold"
             },
-            labelPosition: "beside-icon",
+            labelPosition: "below-icon",
             tabStyle: {
-              marginTop: 25,
-              marginLeft: 10,
-              marginRight: 10,
-              borderRadius: 30,
-              borderWidth: 2,
               alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#5653d4"
+              justifyContent: "center"
             }
           }}
         >
-          <Tab.Screen name="Transaction" component={TransactionScreen} />
-          <Tab.Screen name="Search" component={SearchScreen} />
+          <Tab.Screen name="Ride" component={RideScreen} />
+          <Tab.Screen name="Ride History" component={RideHistoryScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     );
